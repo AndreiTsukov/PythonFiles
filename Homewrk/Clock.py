@@ -7,4 +7,4 @@ for i in range(0,3):
                 if i == r and k == e:
                     print('+')
                     s+=1
-print(s)
+print('Всего может выпасть симетрия = ',s)
