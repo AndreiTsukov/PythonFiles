@@ -42,5 +42,8 @@ while f:
     povtor  = input('Хотите повторить тест y/n = ')
     if povtor == 'n':
         break
+    elif povtor == 'y':
+        prav = 0
+    
         
     
