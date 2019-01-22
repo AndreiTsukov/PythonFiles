@@ -68,7 +68,7 @@ for i in range(row):
     for j in range(1,row+1):
         print(j, end = ' ')
     print()
-
+'''
 suvin = 0
 for i in range(0,10):
     for k in range(0,10):
@@ -82,19 +82,6 @@ for i in range(0,10):
                    
                     
 print('Всего придеться убрать техники = ',suvin)
-'''
-suvin = 0
-for i in range(0,24):
-    for k in range(0,60):
-        #print(i,k)
-        z = str(i,k)
-        if z == i and k or k and i:
-            suvin+=1
-                   
-print(i,k)                    
-print('Симетричные появляються = ',suvin)
-
-
 
 
 
