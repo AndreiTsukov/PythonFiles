@@ -51,7 +51,7 @@ for i in range(1,n+1):
     else:
         print(rand)
 print('сумма всех рандомных чисел == ',summa)
-'''
+
 import random
 ot = 0
 for i in range(1,6):    
@@ -62,4 +62,6 @@ for i in range(1,6):
     if a == rand + rand2:
         ot = ot + 1
 print('количество правельных ответов =',ot)
-        
+ '''
+s='asfdsfsdf'
+print(s[1:])
