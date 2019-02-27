@@ -76,6 +76,7 @@ elif int(isikukood[0]) == 5 or int(isikukood[0]) == 6:
                      year-=1
        print('Человеку = ',year,' лет')
 '''
+#Уровень сложности C
 now_date = datetime.date.today()
 isikukood = ''
 m = True
