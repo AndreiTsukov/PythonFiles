@@ -79,7 +79,7 @@ elif int(isikukood[0]) == 5 or int(isikukood[0]) == 6:
 #Уровень сложности C
 now_date = datetime.date.today()
 isikukood = ''
-m = True
+proverka = True
 def isikukods():                     
        if int(isikukood[0]) == 3 or int(isikukood[0]) == 4: #
               date = '19'
@@ -119,48 +119,51 @@ def isikukods():
                      if now_date.day < isikukood_date.day:
                             year-=1
               print('Человеку = ',year,' лет')
+              if isikukood_date == now_date:
+                     print('С днем рождения!')
               
 while not isikukood.isdigit() or int(isikukood[0]) != 3 and int(isikukood[0]) != 4 and int(isikukood[0]) != 5 and int(isikukood[0]) != 6 or int(len(isikukood)!=11):
        isikukood = input('Введите свой isikukood = ')
-while m:
-       m = 0
+while proverka:
        otvet = 0
-       j = 0 
+       t = 0
+       m = 0
+       j = 0
        for i in range(1,10):
-              otvet = int(isikukood[m]) * i
-              m+=1
-              j = j + otvet
-              if i == 9:
-                     otvet = int(isikukood[m]) * 1
-                     j = j + otvet
-       fff = str(j)[-1]
-       zzz = str(isikukood[-1])
-       if int(fff) + 1 == int(zzz) or int(fff) == int(zzz) :
-              print('Ваш isikukood коректный')
-              isikukods()
-              break
-       else:
-              m = 0
+            otvet = int(isikukood[m]) * i
+            m+=1
+            j = j + otvet
+            if i == 9:
+                otvet = int(isikukood[-2]) * 1
+                j = j + otvet
+                j = str(j)
+       if int(j[-1])+1 != int(isikukood[-1]):
               otvet = 0
-              t = 0 
+              t = 0
+              m = 0
+              j = 0
               for i in range(3,10):
-                     otvet = int(isikukood[m]) * i
-                     m+=1
-                     t = t + otvet
-                     if i == 9:
-                            x = 0
-                            otvet = int(isikukood[m]) * x
-                            x+=1
-                            t = t + otvet
-                            #print(t)
-              if int(t) == int(zzz) or int(t)+1 == int(zzz) :
-                     print('Ваш isikukood коректный')
+                   otvet = int(isikukood[m]) * i
+                   m+=1
+                   j = j + otvet
+                   if i == 9:
+                       for z in range(1,4):
+                           otvet = int(isikukood[m]) * z
+                           m+=1
+                           j = j + otvet
+              j = str(j)
+              if int(j[-1])+1 != int(isikukood[-1]):
+                     print('Ваш исикукод не действительный')
+                     break
+              elif int(j[-1])+1 == int(isikukood[-1]):
+                     print('Ваш исикукод действительный')
                      isikukods()
                      break
-                     
-              else:
-                     print('Ваш isikukood не коректный')
+       elif int(j[-1])+1 == int(isikukood[-1]):
+                     print('Ваш исикукод действительный')
+                     isikukods()
                      break
+              
 
 
 
