@@ -5,8 +5,8 @@ black=(   0,   0,   0)
 white=( 255, 255, 255)
 red=( 255, 0, 0)
 blue=( 0, 0, 255)
-o = 'Нолик'
-x = 'Крестик'
+o = 'zero'
+x = 'cross'
 screen=pygame.display.set_mode(size)
 pygame.display.set_caption("Cordinate sys")
 done = True
@@ -29,10 +29,10 @@ while done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 print(event.pos) # Используеться для показа позиции курсора
-                if event.pos[0] < 200 and event.pos[1] < 200:
+                if event.pos[0] < 200 and event.pos[1] < 200: #1
                     #Проверка на наличии крестика или нолика в ячейкке
                     if zanet[1] == x or zanet[1] == o:
-                        print('Ход был уже выполнен')
+                        print('the move is already taken')
                     else:
                         #Проверка хода игрока
                         #0 - нолики
@@ -44,7 +44,27 @@ while done:
                         elif pohodil == 1:
                             pygame.draw.line(screen,red,[0,0],[200,200],3)
                             pygame.draw.line(screen,red,[0,200],[200,0],3)
-                            pohodil += 1
+                            pohodil -= 1
                             zanet.insert(1, x) #Замена цифры в списке крестиком
                         pygame.display.flip()
                         print(zanet)
+                if event.pos[0] < 400 and event.pos[0] > 200 and event.pos[1] < 200: #2
+                    #Проверка на наличии крестика или нолика в ячейкке
+                    if zanet[2] == x or zanet[2] == o:
+                        print('the move is already taken')
+                    else:
+                        #Проверка хода игрока
+                        #0 - нолики
+                        #1 - крестики
+                        if pohodil == 0:
+                            pygame.draw.circle(screen, blue, (300,100), 100, 3)
+                            pohodil+=1
+                            zanet.insert(2, o) #Замена цифры в списке ноликом
+                        elif pohodil == 1:
+                            pygame.draw.line(screen,red,[200,0],[400,200],3)
+                            pygame.draw.line(screen,red,[400,0],[200,200],3)
+                            pohodil -= 1
+                            zanet.insert(2, x) #Замена цифры в списке крестиком
+                        pygame.display.flip()
+                        print(zanet)
+pygame.quit()
