@@ -1,7 +1,4 @@
 import pygame
-
- 
-    
 pygame.init()
 size = [600,800]
 black=(   0,   0,   0)
@@ -15,10 +12,9 @@ pygame.display.set_caption("Cordinate sys")
 done = True
 screen.fill(white)
 clock=pygame.time.Clock()
-CrossWin = pygame.image.load('CrossWin.jpg')
-ZerosWin = pygame.image.load('ZerosWin.jpg')
-CrossWin = pygame.image.load('draw.jpg')
-
+crosswin = pygame.image.load('crosswin.jpg')
+zeroswin = pygame.image.load('zeroswin.jpg')
+draw = pygame.image.load('draw.jpg')
 pygame.draw.line(screen,black,[0,0],[600,0],1)
 pygame.draw.line(screen,black,[0,200],[600,200],1)
 pygame.draw.line(screen,black,[0,400],[600,400],1)
@@ -30,7 +26,6 @@ pygame.display.flip()
 pohodil = 1
 steep = 0
 zanet = ['none',1,2,3,4,5,6,7,8,9]
-
 def winner():
     if zanet[1] == zanet[2] == zanet[3]:
         return True
@@ -43,20 +38,16 @@ def winner():
     if zanet[2] == zanet[5] == zanet[8]:
         return True
     if zanet[3] == zanet[6] == zanet[9]:
-        whowins()    
+        whowins()
     if zanet[1] == zanet[5] == zanet[9]:
         return True
     if zanet[3] == zanet[5] == zanet[7]:
         return True
-    
-    
 while done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 done=False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            
-            #print('steep = ',steep)
             if event.button == 1:
                 if event.pos[0] < 200 and event.pos[1] < 200: #1
                     #Проверка на наличии крестика или нолика в ячейкке
@@ -77,7 +68,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[1] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 400 and event.pos[0] > 200 and event.pos[1] < 200: #2
                     #Проверка на наличии крестика или нолика в ячейкке
@@ -98,7 +88,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[2] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 600 and event.pos[0] > 400 and event.pos[1] < 200: #3
                     #Проверка на наличии крестика или нолика в ячейкке
@@ -119,7 +108,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[3] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 200 and event.pos[1] > 200 and event.pos[1] < 400: #4
                     if zanet[4] == x or zanet[4] == o:
@@ -139,7 +127,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[4] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 400 and event.pos[0] > 200 and event.pos[1] < 400 and event.pos[1] > 200: #5
                     if zanet[5] == x or zanet[5] == o:
@@ -159,7 +146,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[5] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 600 and event.pos[0] > 400 and event.pos[1] > 200 and event.pos[1] < 400: #6
                     if zanet[6] == x or zanet[6] == o:
@@ -179,7 +165,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[6] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 200 and event.pos[0] > 0 and event.pos[1] > 400 and event.pos[1] < 600: #7
                     if zanet[7] == x or zanet[7] == o:
@@ -199,7 +184,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[7] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 400 and event.pos[0] > 200 and event.pos[1] > 400 and event.pos[1] < 600: #8
                     if zanet[8] == x or zanet[8] == o:
@@ -219,7 +203,6 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[8] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
                 if event.pos[0] < 600 and event.pos[0] > 400 and event.pos[1] > 400 and event.pos[1] < 600: #9
                     if zanet[9] == x or zanet[9] == o:
@@ -239,23 +222,25 @@ while done:
                             pohodil -= 1
                             steep += 1
                             zanet[9] = 'X' #Замена цифры в списке крестиком
-                        pygame.display.flip()
                         print(zanet)
-                
                 if winner() == True:
                     if pohodil == 0:
-                        screen.blit(CrossWin, (0,600))
-                        pygame.display.flip()
-                    else:           
-                        screen.blit(ZerosWin, (0,600))
-                        pygame.display.flip()
-                    if steep >=10:
-                        screen.blit(draw, (0,600))
-                        pygame.display.flip()
-                print(steep)         
-                
-                    
-                
+                        screen.blit(crosswin, (0,600))
+                    else:
+                        screen.blit(zeroswin, (0,600))
+                elif steep == 9:
+                    if winner() == True:
+                        if pohodil == 0:
+                            screen.blit(crosswin, (0,600))
+                        else:
+                            screen.blit(zeroswin, (0,600))
+                    else:
+                        screen.blit(draw, (0,601))
+                pygame.display.flip()
+                print(steep)
 
-                                    
+
+
+
+
 pygame.quit()
