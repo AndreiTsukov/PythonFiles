@@ -1,4 +1,5 @@
 import pygame
+import time
 pygame.init()
 size = [600,800]
 black=(   0,   0,   0)
@@ -25,6 +26,7 @@ pygame.draw.line(screen,black,[600,0],[600,600],1)
 pygame.display.flip()
 pohodil = 1
 steep = 0
+win = 0
 zanet = ['none',1,2,3,4,5,6,7,8,9]
 def winner():
     if zanet[1] == zanet[2] == zanet[3]:
@@ -225,22 +227,20 @@ while done:
                         print(zanet)
                 if winner() == True:
                     if pohodil == 0:
-                        screen.blit(crosswin, (0,600))
+                        screen.blit(crosswin, (0,601))
+                        print("crosswin")
                     else:
-                        screen.blit(zeroswin, (0,600))
+                        screen.blit(zeroswin, (0,601))
+                        print("zeroswin")
                 elif steep == 9:
                     if winner() == True:
                         if pohodil == 0:
-                            screen.blit(crosswin, (0,600))
+                            screen.blit(crosswin, (0,601))
+                            print("crosswin")
                         else:
                             screen.blit(zeroswin, (0,600))
+                            print("zeroswin")
                     else:
                         screen.blit(draw, (0,601))
-                pygame.display.flip()
-                print(steep)
-
-
-
-
-
+                        print("draw")
 pygame.quit()
