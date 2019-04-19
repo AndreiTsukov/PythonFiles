@@ -1,5 +1,6 @@
 import pygame
 import time
+from os import path
 pygame.init()
 size = [600,800]
 black=(   0,   0,   0)
@@ -13,9 +14,10 @@ pygame.display.set_caption("Cordinate sys")
 done = True
 screen.fill(white)
 clock=pygame.time.Clock()
-crosswin = pygame.image.load('crosswin.jpg')
-zeroswin = pygame.image.load('zeroswin.jpg')
-draw = pygame.image.load('draw.jpg') #Ничья
+working_dir = path.dirname(__file__)
+crosswin = pygame.image.load(path.join(working_dir, 'CrossWin.jpg')).convert()
+zeroswin = pygame.image.load(path.join(working_dir, 'ZerosWin.jpg')).convert()
+draw = pygame.image.load(path.join(working_dir, 'draw.jpg')).convert()#Ничья
 pygame.draw.line(screen,black,[0,0],[600,0],1)
 pygame.draw.line(screen,black,[0,200],[600,200],1)
 pygame.draw.line(screen,black,[0,400],[600,400],1)
@@ -233,7 +235,7 @@ while done:
                                 if pohodil == 0:
                                     screen.blit(crosswin, (0,601))
                                     print("Win = crosswin")
-                                    win = False 
+                                    win = False
                                 else:
                                     screen.blit(zeroswin, (0,601))
                                     print("Win = zeroswin")
