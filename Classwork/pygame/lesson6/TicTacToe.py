@@ -1,6 +1,6 @@
 import pygame
 import time
-from os import path
+import os
 pygame.init()
 size = [600,800]
 black=(   0,   0,   0)
@@ -14,10 +14,10 @@ pygame.display.set_caption("Cordinate sys")
 done = True
 screen.fill(white)
 clock=pygame.time.Clock()
-working_dir = path.dirname(__file__)
-crosswin = pygame.image.load(path.join(working_dir, 'CrossWin.jpg')).convert()
-zeroswin = pygame.image.load(path.join(working_dir, 'ZerosWin.jpg')).convert()
-draw = pygame.image.load(path.join(working_dir, 'draw.jpg')).convert()#Ничья
+working_dir = os.path.dirname(__file__) #используется , чтобы связать картинку с дерикторией
+crosswin = pygame.image.load(os.path.join(working_dir, 'CrossWin.jpg')).convert()
+zeroswin = pygame.image.load(os.path.join(working_dir, 'ZerosWin.jpg')).convert()
+draw = pygame.image.load(os.path.join(working_dir, 'draw.jpg')).convert()#Ничья
 pygame.draw.line(screen,black,[0,0],[600,0],1)
 pygame.draw.line(screen,black,[0,200],[600,200],1)
 pygame.draw.line(screen,black,[0,400],[600,400],1)
