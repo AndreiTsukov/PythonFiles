@@ -39,7 +39,7 @@ while done:
                         if i.key in [pygame.K_LEFT, pygame.K_RIGHT,pygame.K_UP,pygame.K_DOWN]:
                                 motion = STOP
         if motion == LEFT:
-                x -= 3  
+                x -= 3
         elif motion == RIGHT:
                 x += 3
         elif motion == UP:
@@ -48,7 +48,7 @@ while done:
                 y+=3
         clock.tick(FPS)
 pygame.quit()
-
+'''
 import pygame
 FPS = 120
 W = 700 # ширина экрана
@@ -75,7 +75,7 @@ running = True
 car = 0
 while running:
         sc.fill([255, 255, 255])
-        if car == 0:    
+        if car == 0:
                 sc.blit(pilt, (x,y))
         elif car == 1:
                 sc.blit(pilt2, (x,y))
@@ -94,7 +94,7 @@ while running:
                                 motion = LEFT
                         elif i.key == pygame.K_RIGHT:
                                 motion = RIGHT
-                        
+
                 elif i.type == pygame.KEYUP:
                         if i.key in [pygame.K_LEFT, pygame.K_RIGHT,pygame.K_UP,pygame.K_DOWN]:
                                 motion = STOP
@@ -143,7 +143,8 @@ while done:
                 x,y = i.pos
                 pygame.draw.circle(sc, RED, i.pos, 20)
                 pygame.display.update()
-                
-                
+
+
         pygame.time.delay(20)
 pygame.quit()
+'''
