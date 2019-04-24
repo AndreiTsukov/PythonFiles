@@ -99,9 +99,7 @@ while done:
               y-=3
        elif motion == DOWN:
               y+=3
-
        #Не дает выйти за рамки
-
        if x > 800:
               x = 0
        elif x < 0:
@@ -110,14 +108,11 @@ while done:
               y = 0
        elif y < 0:
               y = 600
-
        for oun in ounad:
               if abs(oun[0] - x) < 45 and abs(oun[1] - y) < 45:
                      ounad.remove(oun)
                      ounwin += 1
                      total+=1
-
-
        if total == ountearv:
               screen.fill(white)
               text1 = f1.render('Ты съел = '+str(ounwin), 1, (180, 0, 0))
@@ -134,7 +129,6 @@ while done:
                      win = 'Компьютер'
               screen.blit(text3,[300,400])
               pygame.display.flip()
-
        if poligon_anti.x > 775 or poligon_anti.x < 25:
                poligon_anti.change_x = poligon_anti.change_x * -1
                #print('x = ',poligon_anti.change_x)
@@ -153,8 +147,6 @@ while done:
                      ounad.remove(oun)
                      total+=1
                      antiwin+=1
-
-
        clock.tick(120)
        pygame.display.flip()
 pygame.quit()
