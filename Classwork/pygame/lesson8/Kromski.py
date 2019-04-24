@@ -8,7 +8,7 @@ def apple_green(x,y):
        pygame.draw.circle(screen,green,[x,y],25,0)
        pygame.draw.polygon(screen,red,poligon_points,0)
 class Poligon_anti():
-    # --- Атрибуты класса ---
+    # --- Атрибуты класса --
     # Ball position
     x=0
     y=0
