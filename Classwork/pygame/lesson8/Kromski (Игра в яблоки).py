@@ -24,7 +24,7 @@ class Poligon_anti():
     # --- Методы класса ---
     def move(self):
            self.x += self.change_x
-           self.y += self.change_y   
+           self.y += self.change_y
     def draw(self, screen):
            pygame.draw.rect(screen, self.color, [self.x, self.y, self.m, self.z],0)
 pygame.init()
@@ -71,11 +71,11 @@ for i in range(ountearv):
        ounix = random.randint(50,750)
        ouniy = random.randint(50,550)
        ounad.append([ounix,ouniy])
-while done:       
+while done:
        screen.fill(white)
        apple_green(x,y)
        for oun in ounad:
-              apple_red(oun[0],oun[1])    
+              apple_red(oun[0],oun[1])
        for i in pygame.event.get():
               if i.type == pygame.QUIT:
                      done = False
@@ -92,16 +92,16 @@ while done:
                         if i.key in [pygame.K_LEFT, pygame.K_RIGHT,pygame.K_UP,pygame.K_DOWN]:
                                 motion = STOP
        if motion == LEFT:
-              x -= 3  
+              x -= 3
        elif motion == RIGHT:
              x += 3
        elif motion == UP:
               y-=3
        elif motion == DOWN:
               y+=3
-              
+
        #Не дает выйти за рамки
-              
+
        if x > 800:
               x = 0
        elif x < 0:
@@ -110,7 +110,7 @@ while done:
               y = 0
        elif y < 0:
               y = 600
-      
+
        for oun in ounad:
               if abs(oun[0] - x) < 45 and abs(oun[1] - y) < 45:
                      ounad.remove(oun)
@@ -134,18 +134,23 @@ while done:
                      win = 'Компьютер'
               screen.blit(text3,[300,400])
               pygame.display.flip()
-              
+
+
+
+
+
+
        if poligon_anti.x > 775 or poligon_anti.x < 25:
                poligon_anti.change_x = poligon_anti.change_x * -1
                #print('x = ',poligon_anti.change_x)
        if poligon_anti.y > 575 or poligon_anti.y < 25:
                poligon_anti.change_y = poligon_anti.change_y * -1
                #print('y = ',poligon_anti.change_y)
-               
-       if poligon == True:       
+
+       if poligon == True:
               poligon_anti.draw(screen)
               poligon_anti.move()
-       
+
        for oun in ounad:
               if abs(poligon_anti.x - oun[0]) < 45 and abs(poligon_anti.y - oun[1]) < 45:
                      print(poligon_anti.x,x,poligon_anti.y,y)
@@ -153,12 +158,6 @@ while done:
                      ounad.remove(oun)
                      total+=1
                      antiwin+=1
-       
-       '''TEST ZONE'''
-       #print(poligon_anti.y)
-       #cyrcle motion
-       #print('x = ',x)
-       #print('y = ',y)
        
        clock.tick(120)
        pygame.display.flip()
