@@ -27,6 +27,7 @@ animation9 = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/rig
 animation10 = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/right/10.png')).convert()
 animation11 = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/right/11.png')).convert()
 #left animation
+animation1_l = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/left/1.png')).convert()
 animation2_l = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/left/2.png')).convert()
 animation3_l = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/left/3.png')).convert()
 animation4_l = pygame.image.load(os.path.join(working_dir, 'img/animation_walk/left/4.png')).convert()
@@ -73,7 +74,7 @@ while done:
 
     if motion == LEFT:
         x-=5
-        list = [animation2_l,animation3_l,animation4_l,animation5_l,animation6_l,animation7_l,animation8_l,animation9_l,animation10_l,animation11_l]
+        list = [animation1_l,animation2_l,animation3_l,animation4_l,animation5_l,animation6_l,animation7_l,animation8_l,animation9_l,animation10_l,animation11_l]
         for i in list:
             screen.fill(white)
             screen.blit(bg,(0,0))
