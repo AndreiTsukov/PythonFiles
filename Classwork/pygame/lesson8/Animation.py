@@ -72,28 +72,32 @@ while done:
                 img = 0
 
     if motion == LEFT:
-        x-=3
+        x-=5
         list = [animation2_l,animation3_l,animation4_l,animation5_l,animation6_l,animation7_l,animation8_l,animation9_l,animation10_l,animation11_l]
         for i in list:
             screen.fill(white)
             screen.blit(bg,(0,0))
             screen.blit(i,(x,y))
             pygame.display.flip()
+            clock.tick(60)
     elif motion == RIGHT:
-        x += 3
+        x += 5
         list = [animation1,animation2,animation3,animation4,animation5,animation6,animation7,animation8,animation9,animation10,animation11]
         for i in list:
             screen.fill(white)
             screen.blit(bg,(0,0))
             screen.blit(i,(x,y))
             pygame.display.flip()
-    elif motion == UP:
-        y-=3
+            clock.tick(60)
     elif motion == DOWN:
         y+=3
     #Не дает выйти за рамки
     if y > 479:
         y-=3
-    clock.tick(60)
+    elif x > 800:
+        x = 0
+    elif x < 0:
+        x = 800
+    #clock.tick(11)
     pygame.display.flip()
 pygame.quit()
