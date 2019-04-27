@@ -4,17 +4,24 @@ import os
 
 def animation_hero():
     global animCount
+    global motion
     screen.blit(bg,(0,0))
-    if animCount + 1 >=30:
+    if animCount + 1 >=27:
         animCount = 0
     if left:
-        screen.blit(hero_left[animCount // 5],(x,y))
+        screen.blit(hero_left[animCount // 3],(x,y))
         animCount+=1
     elif right:
-        screen.blit(hero_right[animCount // 5],(x,y))
+        screen.blit(hero_right[animCount // 3],(x,y))
         animCount+=1
     else:
-        screen.blit(hero_default,(x,y))
+        if motion == 1:
+            screen.blit(hero_default_left,(x,y))
+        else:
+            screen.blit(hero_default_right,(x,y))
+    pygame.display.flip()
+def anti():
+
     pygame.display.flip()
 pygame.init()
 size = [800,600]
@@ -51,17 +58,24 @@ hero_left = [
     pygame.image.load(os.path.join(path,'img/hero/left/8.png')),
     pygame.image.load(os.path.join(path,'img/hero/left/9.png'))
 ]
-hero_default = pygame.image.load(os.path.join(path,'img/hero/left/1.png'))
+hero_default_left = pygame.image.load(os.path.join(path,'img/hero/left/1.png'))
+hero_default_right = pygame.image.load(os.path.join(path,'img/hero/right/1.png'))
+wall = pygame.image.load(os.path.join(path,'img/pr.png'))
 done = True
 x = 20
 y = 479
+a_x = 500
+a_y = 479
 animCount = 0
 left = False
 right = False
+motion = 0
+JumpCount = 10
+isJump = False
 while done:
-    screen.fill(white)
     screen.blit(bg,(0,0))
-    screen.blit(hero_default,(x,y))
+    screen.blit(hero_default_right,(x,y))
+    screen.blit(wall,(a_x,a_y))
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             done = False
@@ -70,15 +84,31 @@ while done:
         x -= 3
         left = True
         right = False
+        motion = 1
     elif keys[pygame.K_RIGHT]:
         x += 3
         right = True
         left = False
+        motion = 2
     else:
         right = False
         left = False
         animCount = 0
+    if not(isJump): #если не верно / if not true
+        if keys[pygame.K_SPACE]:
+            isJump = True
+    else:
+        if JumpCount >= -10:
+            if JumpCount < 0:
+                y += (JumpCount ** 2) / 2
+            else:
+                y -= (JumpCount ** 2) / 2
+            JumpCount -=1
+        else:
+            isJump = False
+            JumpCount = 10
+
     animation_hero()
-    clock.tick(30)
+    clock.tick(45)
     pygame.display.flip()
 pygame.quit()
