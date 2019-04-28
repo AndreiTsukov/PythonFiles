@@ -3,11 +3,18 @@ import random
 import os
 
 def animation_hero():
-    global animCount
+    global animCount #эти переменные должны быть глобальными, те берет инфу из основного кода
     global motion
-    screen.blit(bg,(0,0))
-    if animCount + 1 >=27: # количество анимаций , которые будут выполнены
-        #если анимация будет больше 27, то они обнуляються и начиаються с первой
+    screen.blit(bg,(0,0)) #отображаем фон в первую очередь, чтобы прикрыть, то что мы намалевали в прошлый раз
+    if animCount >=27: # если твой воторой кадр зайдет за отметку в 30 кадров, анимация начнеться с нуля
+        '''
+        У меня в списке(right_animation,left_animation) 9 картинок.
+        Когда человек нажимает на левую кнопку, он берет список и грубо говоря повторяет один кадр 3 раз, после
+        пересечения отметки в 3 раза, он пускает вторую картинку и так по порядку (1//3 = 0 , но 3//3 = 1)
+        Таким образом мы берем за базовое значение количесто кадров 27, так как у нас 9 кадров, мы делим количество
+        кадров в секундку(27) на количесвто кадров (9) = 3 раз один кадр (количество кадров в секунду / кол.картинок)
+        Я взял 27 кадров/сек. так, как 30/9 = 3,333..., так что оптимальным решением будет взять 27 (27/9=3)
+        '''
         animCount = 0
     if left:
         screen.blit(hero_left[animCount // 3],(x,y))
@@ -16,6 +23,10 @@ def animation_hero():
         screen.blit(hero_right[animCount // 3],(x,y))
         animCount+=1
     else:
+        '''
+        эта проверка нужна для того, чтобы поставить персонажа в правельную сторону
+        если персонаж шел на лево, то и смотреть он будет в левую часть
+        '''
         if motion == 1:
             screen.blit(hero_default_left,(x,y))
         else:
@@ -72,8 +83,7 @@ JumpCount = 10
 isJump = False
 while done:
     screen.blit(bg,(0,0))
-    screen.blit(hero_default_right,(x,y))
-    screen.blit(wall,(a_x,a_y))
+    screen.blit(hero_default_right,(x,y)) # стандартная позиция персонажа при запуске программы
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             done = False
@@ -82,12 +92,12 @@ while done:
         x -= 3
         left = True
         right = False
-        motion = 1 # стандартное положение героя
+        motion = 1 # определит куда будет смотреть персонаж при остановки (для функции animation_hero() )
     elif keys[pygame.K_RIGHT]:
         x += 3
         right = True
         left = False
-        motion = 2 # стандартное положение героя
+        motion = 2 # определит куда будет смотреть персонаж при остановки (для функции animation_hero() )
     else:
         right = False
         left = False
