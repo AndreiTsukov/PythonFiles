@@ -6,7 +6,8 @@ def animation_hero():
     global animCount
     global motion
     screen.blit(bg,(0,0))
-    if animCount + 1 >=27:
+    if animCount + 1 >=27: # количество анимаций , которые будут выполнены
+        #если анимация будет больше 27, то они обнуляються и начиаються с первой
         animCount = 0
     if left:
         screen.blit(hero_left[animCount // 3],(x,y))
@@ -19,9 +20,6 @@ def animation_hero():
             screen.blit(hero_default_left,(x,y))
         else:
             screen.blit(hero_default_right,(x,y))
-    pygame.display.flip()
-def anti():
-
     pygame.display.flip()
 pygame.init()
 size = [800,600]
@@ -84,12 +82,12 @@ while done:
         x -= 3
         left = True
         right = False
-        motion = 1
+        motion = 1 # стандартное положение героя
     elif keys[pygame.K_RIGHT]:
         x += 3
         right = True
         left = False
-        motion = 2
+        motion = 2 # стандартное положение героя
     else:
         right = False
         left = False
