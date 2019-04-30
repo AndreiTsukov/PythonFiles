@@ -11,6 +11,7 @@ screen=pygame.display.set_mode(size)
 pygame.display.set_caption("Professor Craven's Cool Game")
 done = True
 clock=pygame.time.Clock()
+
 surf = pygame.Surface((200,150))
 surf.fill(white)
 screen.blit(surf, (50,25))
