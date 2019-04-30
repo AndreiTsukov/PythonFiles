@@ -45,6 +45,7 @@ y = 50
 background.blit(hero, (x, y))
 sc.blit(background, (xb, yb))
 pygame.display.update()
+
 done = True
 while done:
     for i in pygame.event.get():
