@@ -121,8 +121,8 @@ while done:
         else:
             isJump = False
             JumpCount = 10
-
     animation_hero()
+    
     clock.tick(45)
     pygame.display.flip()
 pygame.quit()
