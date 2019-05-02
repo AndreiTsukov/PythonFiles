@@ -44,6 +44,7 @@ path = os.path.dirname(__file__)
 bg = pygame.image.load(os.path.join(path,'img/bg.jpg'))
 ##import img##
 #right
+#создаем списки с картинками
 hero_right = [
     pygame.image.load(os.path.join(path,'img/hero/right/1.png')),
     pygame.image.load(os.path.join(path,'img/hero/right/2.png')),
